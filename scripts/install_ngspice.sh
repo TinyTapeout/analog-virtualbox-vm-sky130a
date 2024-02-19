@@ -2,7 +2,7 @@
 
 set -e
 
-sudo apt-get install -y build-essential libxaw7-dev libreadline-dev autoconf automake libtool
+sudo apt-get install -y build-essential libxaw7-dev libreadline-dev autoconf automake libtool flex bison
 
 git clone -b ngspice-$NGSPICE_VERSION git://git.code.sf.net/p/ngspice/ngspice /tmp/ngspice
 
