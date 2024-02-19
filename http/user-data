@@ -1,0 +1,72 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US.UTF-8
+  refresh-installer:
+      update: yes
+  keyboard:
+      layout: us
+  network:
+      network:
+          version: 2
+          ethernets:
+              eth0:
+                 dhcp4: yes
+  apt:
+      primary:
+          - arches: [default]
+            uri: http://archive.ubuntu.com/ubuntu/
+  storage:
+      swap:
+          size: 0
+      config:
+          - { type: disk, id: disk-0, ptable: gpt, wipe: superblock-recursive, grub_device: true }
+          - { type: partition, id: partition-0, number: 1, device: disk-0, size: 1M, wipe: superblock, flag: bios_grub }
+          - { type: partition, id: partition-1, number: 2, device: disk-0, size: 400M, wipe: superblock, flag: boot }
+          - { type: partition, id: partition-2, number: 3, device: disk-0, size: 4096M, wipe: superblock, flag: swap }
+          - { type: partition, id: partition-3, number: 4, device: disk-0, size: -1, wipe: superblock }
+          - { type: format, id: format-0, volume: partition-1, fstype: ext4 }
+          - { type: format, id: format-1, volume: partition-2, fstype: swap }
+          - { type: format, id: format-2, volume: partition-3, fstype: ext4 }
+          - { type: mount, id: mount-0, device: format-0, path: /boot }
+          - { type: mount, id: mount-1, device: format-1, path: none }
+          - { type: mount, id: mount-2, device: format-2, path: / }
+  identity:
+      realname: 'Tiny Tapeout User'
+      username: ttuser
+      # A password hash is needed. `mkpasswd --method=SHA-512` can help.
+      # password: magic
+      password: '$6$R0qxzPSbPU5Ynr$Gq2DzboPGHyQw8BmzjakviAK0fvdRS6c6V9WGmIqA5pI/bCWX782kHqGZcJs6vIbLtgVUlxLPH9zmW9eXpqej1'
+      hostname: ubuntu-desktop
+  ssh:
+      install-server: yes
+      authorized-keys: []
+      allow-pw: yes
+  packages:
+      - ca-certificates
+      - open-vm-tools
+      - openssh-server
+      - net-tools
+      - curl
+      - sudo
+      - software-properties-common
+      - apt-transport-https
+      - lsb-release
+  early-commands:
+    # otherwise packer tries to connect and exceed max attempts:
+    - systemctl stop ssh.service
+    - systemctl stop ssh.socket
+  late-commands:
+      - echo 'ttuser ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ttuser
+      - |
+        cat > /target/etc/systemd/network/20-dhcp.network << EOF
+        [Match]
+        Name=enp*
+
+        [Network]
+        DHCP=ipv4
+        EOF
+      - |
+        curtin in-target --target=/target -- /bin/bash -c ' \
+            exit 0 \
+        '

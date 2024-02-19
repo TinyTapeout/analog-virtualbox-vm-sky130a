@@ -1,0 +1,49 @@
+# This is a basic workflow to help you get started with Actions
+
+name: build_vm
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Install virtualbox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y virtualbox
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        env:
+          PACKER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+      - name: Configure packer
+        run: "packer init ./image.pkr.hcl"
+
+      - name: Build VM
+        run: "packer build ./image.pkr.hcl"
+
+      - name: Upload VM image
+        uses: actions/upload-artifact@v4
+        with:
+          name: tt_analog_virtualbox_ova
+          path: output-tinytapeout_analog_vm/tinytapeout_analog_vm.ova
