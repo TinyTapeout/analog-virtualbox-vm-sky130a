@@ -14,5 +14,3 @@ cd release
 make -j4
 sudo make install
 sudo rm -rf /tmp/ngspice
-
-cp $PDK_ROOT/sky130A/libs.tech/ngspice/spinit ~/.spiceinit
