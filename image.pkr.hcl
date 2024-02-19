@@ -64,10 +64,12 @@ build {
       PDK_ROOT        = "/home/ttuser/pdk"
       PDK_VERSION     = "bdc9412b3e468c102d01b7cf6337be06ec6e9c9a"
       MAGIC_VERSION   = "8.3.460"
+      NETGEN_VERSION  = "1.5.270"
       KLAYOUT_VERSION = "0.28.17"
       XSCHEM_VERSION  = "3.4.4"
     }
     scripts = [
+      "scripts/install_netgen.sh",
       "scripts/install_magic.sh",
       "scripts/install_xschem.sh",
       "scripts/install_klayout.sh",

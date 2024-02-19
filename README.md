@@ -9,6 +9,7 @@ The VM is based on Ubuntu 22.04 and includes the following tools:
 - [Magic](http://opencircuitdesign.com/magic/)
 - [KLayout](https://www.klayout.de/)
 - [Xschem](https://xschem.sourceforge.io/stefan/index.html)
+- [netgen](http://opencircuitdesign.com/netgen/)
 - [Skywater 130nm PDK](https://github.com/google/skywater-pdk)
 
 To download the VM, go to the [actions](https://github.com/TinyTapeout/analog-virtualbox-vm-sky130a/actions) tab and download the latest "tt_analog_virtualbox_ova" artifact. Import the OVA file into VirtualBox and start the VM.
