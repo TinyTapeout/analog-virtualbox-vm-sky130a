@@ -75,6 +75,7 @@ build {
       "scripts/install_netgen.sh",
       "scripts/install_ngspice.sh",
       "scripts/install_xschem.sh",
+      "scripts/install_gaw.sh",
       "scripts/install_pdk.sh",
       "scripts/terminal_icon.sh"
     ]
