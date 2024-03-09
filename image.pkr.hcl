@@ -78,6 +78,7 @@ build {
       XSCHEM_VERSION  = "3.4.4"
     }
     scripts = [
+      "scripts/install_virtualbox_tools.sh",
       "scripts/install_klayout.sh",
       "scripts/install_magic.sh",
       "scripts/install_netgen.sh",
