@@ -29,6 +29,7 @@ source "virtualbox-iso" "tinytapeout_analog_vm" {
   http_directory         = "./http"
   iso_checksum           = "a4acfda10b18da50e2ec50ccaf860d7f20b389df8765611142305c0e911d16fd"
   iso_url                = "https://old-releases.ubuntu.com/releases/22.04/ubuntu-22.04.3-live-server-amd64.iso"
+  guest_additions_url    = "https://download.virtualbox.org/virtualbox/7.0.14/VBoxGuestAdditions_7.0.14.iso"
   memory                 = 8192
   gfx_controller         = "vmsvga"
   gfx_vram_size          = 128
