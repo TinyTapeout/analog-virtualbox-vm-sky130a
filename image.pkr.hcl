@@ -55,9 +55,15 @@ build {
       "sudo apt-get update",
       "sudo apt-get upgrade -y",
       "sudo apt-get install -y ubuntu-desktop-minimal",
-      "sudo apt-get remove -y --autoremove gnome-initial-setup"
+      "sudo apt-get remove -y --autoremove gnome-initial-setup",
+      "mkdir -p /home/ttuser/Pictures"
     ]
-  }   
+  }
+
+  provisioner "file" {
+    source = "assets/ttwallpaper.png"
+    destination = "/home/ttuser/Pictures/ttwallpaper.png"
+  }
 
   provisioner "shell" {
     env = {
@@ -77,7 +83,8 @@ build {
       "scripts/install_xschem.sh",
       "scripts/install_gaw.sh",
       "scripts/install_pdk.sh",
-      "scripts/terminal_icon.sh"
+      "scripts/terminal_icon.sh",
+      "scripts/set_wallpaper.sh",
     ]
   }
 }
