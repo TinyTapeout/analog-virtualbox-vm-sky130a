@@ -63,6 +63,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "vminfo.json"
+    destination = "/home/ttuser/vminfo.json"
+  }
+
+  provisioner "file" {
     source = "assets/ttwallpaper.png"
     destination = "/home/ttuser/Pictures/ttwallpaper.png"
   }

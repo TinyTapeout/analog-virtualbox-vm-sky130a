@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: build_vm
 
-# Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
@@ -38,6 +35,18 @@ jobs:
   
       - name: Configure packer
         run: "packer init ./image.pkr.hcl"
+
+      - name: 'Write vminfo.json'
+        run: |
+          cat > vminfo.json << EOF
+          {
+            "repo": "${{ github.server_url }}/${{ github.repository }}",
+            "commit": "${{ github.sha }}",
+            "tag": "${{ github.ref }}",
+            "build_time": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          }
+          EOF
+          cat vminfo.json
 
       - name: Build VM
         run: "packer build ./image.pkr.hcl"
