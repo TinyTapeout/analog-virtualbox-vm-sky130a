@@ -76,7 +76,7 @@ build {
     env = {
       PDK_ROOT        = "/home/ttuser/pdk"
       PDK_VERSION     = "bdc9412b3e468c102d01b7cf6337be06ec6e9c9a"
-      KLAYOUT_VERSION = "0.28.17"
+      KLAYOUT_VERSION = "0.29.0"
       MAGIC_VERSION   = "8.3.460"
       NETGEN_VERSION  = "1.5.270"
       NGSPICE_VERSION = "42"
