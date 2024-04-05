@@ -22,6 +22,10 @@ The default username for the VM is `ttuser` and the password is `magic`. You can
 
 The desktop includes shortcuts to start Magic, KLayout, and Xschem. The Skywater 130nm PDK is installed in the `/home/tt_user/pdk` directory.
 
+### Troubleshooting
+
+In case of issues with the graphics (e.g. texts do not appear inside Xschem), try disabling 3D acceleration by opening the VM settings in Virtual Box, going to the "Display" tab, and unchecking "Enable 3D Acceleration" at the bottom of the window.
+
 ## Building the VM locally
 
 To build the VM locally, you need to have [Packer](https://www.packer.io/) and [VirtualBox](https://www.virtualbox.org/) installed. Then, run the following command:
