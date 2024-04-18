@@ -14,6 +14,8 @@ The VM is based on Ubuntu 22.04 and includes the following tools:
 - [gaw](https://gaw.tuxfamily.org/)
 - [Skywater 130nm PDK](https://github.com/google/skywater-pdk)
 
+## Getting the VM
+
 To download the VM, go to the [actions](https://github.com/TinyTapeout/analog-virtualbox-vm-sky130a/actions) tab and download the latest "tt_analog_virtualbox_ova" artifact. Import the OVA file into VirtualBox and start the VM.
 
 ## Using the VM
