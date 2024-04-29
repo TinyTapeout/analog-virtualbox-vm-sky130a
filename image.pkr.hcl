@@ -80,7 +80,7 @@ build {
       MAGIC_VERSION   = "8.3.473"
       NETGEN_VERSION  = "1.5.270"
       NGSPICE_VERSION = "42"
-      XSCHEM_VERSION  = "3.4.5"
+      XSCHEM_VERSION  = "e55c8294c2a89c4a6f45923abd5e20c40e4ffe86"
     }
     scripts = [
       "scripts/install_virtualbox_tools.sh",
