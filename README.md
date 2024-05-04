@@ -20,7 +20,9 @@ You can download the latest version of the VM from the following link:
 
 - [VirtualBox Machine - tinytapeout_analog_vm.ova](https://sky130-vm.tinytapeout.com/tinytapeout_analog_vm.ova)
 
-The VM is about 5 GB in size and requires about 20 GB of disk space to import. You can import the OVA file into VirtualBox by going to `File -> Import Appliance` and selecting the OVA file.
+The VM is about 5 GB in size and requires about 20 GB of disk space to import. You can import the OVA file into [VirtualBox](https://www.virtualbox.org/wiki/Downloads) by going to `File -> Import Appliance` and selecting the OVA file.
+
+You can also import the OVA file into [VMware Workstation Player](https://www.vmware.com/products/workstation-player.html), by going to `Player -> File -> Open...` and selecting the OVA file. When importing into VMware, you will see a warning about "virtual hardware compliance". Click "Retry" to continue.
 
 ### Verifying the download
 
