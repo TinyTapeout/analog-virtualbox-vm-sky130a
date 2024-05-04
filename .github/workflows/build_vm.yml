@@ -88,6 +88,6 @@ jobs:
       - name: Upload VM image to R2
         working-directory: artifacts
         run: |
-          s3cmd put --disable-multipart --acl-public tinytapeout_analog_vm.ova tinytapeout_analog_vm.ova.json tinytapeout_analog_vm.ova.sha256 "s3://$BUCKET_NAME/"
+          s3cmd put --multipart-chunk-size-mb=5000 --acl-public tinytapeout_analog_vm.ova tinytapeout_analog_vm.ova.json tinytapeout_analog_vm.ova.sha256 "s3://$BUCKET_NAME/"
         env:
           BUCKET_NAME: ${{ vars.R2_BUCKET_NAME }}
