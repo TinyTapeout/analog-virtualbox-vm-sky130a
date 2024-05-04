@@ -3,9 +3,9 @@ name: build_vm
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -32,9 +32,9 @@ jobs:
         uses: hashicorp/setup-packer@main
         env:
           PACKER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+
       - name: Configure packer
-        run: "packer init ./image.pkr.hcl"
+        run: 'packer init ./image.pkr.hcl'
 
       - name: 'Write vminfo.json'
         run: |
@@ -49,7 +49,7 @@ jobs:
           cat vminfo.json
 
       - name: Build VM
-        run: "packer build ./image.pkr.hcl"
+        run: 'packer build ./image.pkr.hcl'
 
       - name: Upload VM image
         uses: actions/upload-artifact@v4
