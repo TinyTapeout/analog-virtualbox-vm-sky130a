@@ -16,7 +16,25 @@ The VM is based on Ubuntu 22.04 and includes the following tools:
 
 ## Getting the VM
 
-To download the VM, go to the [actions](https://github.com/TinyTapeout/analog-virtualbox-vm-sky130a/actions) tab and download the latest "tt_analog_virtualbox_ova" artifact. Import the OVA file into VirtualBox and start the VM.
+You can download the latest version of the VM from the following link:
+
+- [VirtualBox Machine - tinytapeout_analog_vm.ova](https://sky130-vm.tinytapeout.com/tinytapeout_analog_vm.ova)
+
+The VM is about 5 GB in size and requires about 20 GB of disk space to import. You can import the OVA file into VirtualBox by going to `File -> Import Appliance` and selecting the OVA file.
+
+### Verifying the download
+
+To verify the integrity of the OVA file using the [SHA256 hash](https://sky130-vm.tinytapeout.com/tinytapeout_analog_vm.ova.sha256). Then run the following command in the directory where the OVA file is located:
+
+```bash
+sha256sum -c tinytapeout_analog_vm.ova.sha256
+```
+
+### Older versions and metadata
+
+To file the build date / commit hash from which the VM was built, download the [JSON metadata file](https://sky130-vm.tinytapeout.com/tinytapeout_analog_vm.ova.json). The metadata file is also present inside the machine, under `/home/ttuser/vminfo.json`.
+
+To download earlier versions of the VM, go to the [actions](https://github.com/TinyTapeout/analog-virtualbox-vm-sky130a/actions) tab, click on one of the workflow runs, and download the tt_analog_virtualbox_ova from the "Artifacts" section (note that downloading GitHub artifacts is usually slower than downloading from the link above).
 
 ## Using the VM
 

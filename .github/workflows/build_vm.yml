@@ -51,8 +51,43 @@ jobs:
       - name: Build VM
         run: 'packer build ./image.pkr.hcl'
 
+      - name: Copy VM info to output directory
+        run: 'cp vminfo.json output-tinytapeout_analog_vm/tinytapeout_analog_vm.ova.json'
+
       - name: Upload VM image
         uses: actions/upload-artifact@v4
         with:
           name: tt_analog_virtualbox_ova
-          path: output-tinytapeout_analog_vm/tinytapeout_analog_vm.ova
+          path: |
+            output-tinytapeout_analog_vm/tinytapeout_analog_vm.ova
+            output-tinytapeout_analog_vm/tinytapeout_analog_vm.ova.json
+
+  publish:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    steps:
+      - name: Download VM image
+        uses: actions/download-artifact@v4
+        with:
+          name: tt_analog_virtualbox_ova
+          path: artifacts
+
+      - name: Generate SHA256 hash
+        working-directory: artifacts
+        run: sha256sum tinytapeout_analog_vm.ova > tinytapeout_analog_vm.ova.sha256
+
+      - name: Set up S3cmd cli tool
+        uses: s3-actions/s3cmd@v1.6.1
+        with:
+          provider: cloudflare
+          access_key: ${{ secrets.R2_ACCESS_KEY }}
+          secret_key: ${{ secrets.R2_SECRET_KEY }}
+          account_id: ${{ vars.R2_ACCOUNT_ID }}
+
+      - name: Upload VM image to R2
+        working-directory: artifacts
+        run: |
+          s3cmd put --disable-multipart --acl-public tinytapeout_analog_vm.ova tinytapeout_analog_vm.ova.json tinytapeout_analog_vm.ova.sha256 "s3://$BUCKET_NAME/"
+        env:
+          BUCKET_NAME: ${{ vars.R2_BUCKET_NAME }}
