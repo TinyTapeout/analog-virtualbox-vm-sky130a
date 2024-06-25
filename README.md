@@ -13,6 +13,8 @@ The VM is based on Ubuntu 22.04 and includes the following tools:
 - [ngspice](http://ngspice.sourceforge.net/)
 - [gaw](https://gaw.tuxfamily.org/)
 - [Skywater 130nm PDK](https://github.com/google/skywater-pdk)
+- [OpenLane](https://openlane.readthedocs.io/en/latest/)
+- [Verilator](https://www.veripool.org/verilator/)
 
 ## Getting the VM
 

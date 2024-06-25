@@ -79,18 +79,22 @@ build {
       KLAYOUT_VERSION = "0.29.1"
       MAGIC_VERSION   = "8.3.473"
       NETGEN_VERSION  = "1.5.270"
+      OPENLANE_TAG    = "2024.05.09"
+      VERILATOR_VERSION = "v5.024"
       NGSPICE_VERSION = "42"
       XSCHEM_VERSION  = "e55c8294c2a89c4a6f45923abd5e20c40e4ffe86"
     }
     scripts = [
       "scripts/install_virtualbox_tools.sh",
+      "scripts/install_pdk.sh",
+      "scripts/install_openlane.sh",
+      "scripts/install_verilator.sh",
       "scripts/install_klayout.sh",
       "scripts/install_magic.sh",
       "scripts/install_netgen.sh",
       "scripts/install_ngspice.sh",
       "scripts/install_xschem.sh",
       "scripts/install_gaw.sh",
-      "scripts/install_pdk.sh",
       "scripts/terminal_icon.sh",
       "scripts/set_wallpaper.sh",
     ]
