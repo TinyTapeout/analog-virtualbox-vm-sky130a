@@ -13,3 +13,5 @@ autoconf
 make -j$(nproc)
 sudo make install
 
+# cleanup
+rm -rf /tmp/verilator-src
