@@ -2,7 +2,7 @@
 
 set -e
 
-sudo apt install -y git make autoconf g++ flex bison help2man
+sudo apt-get install -y git make autoconf g++ flex bison help2man
 
 git clone https://github.com/verilator/verilator /tmp/verilator-src
 cd /tmp/verilator-src
