@@ -20,6 +20,8 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 sudo groupadd -f docker 
 sudo usermod -aG docker $USER
 newgrp docker
+# newgrp doesn't work so hack
+sudo chmod 666 /var/run/docker.sock
 
 # then openlane
 export OPENLANE_ROOT=~/openlane
