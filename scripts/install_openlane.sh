@@ -32,4 +32,5 @@ make pull-openlane
 
 # setup env vars
 echo 'export OPENLANE_ROOT=~/openlane' >> ~/.profile 
-echo 'export OPENLANE_IMAGE_NAME=efabless/openlane:$OPENLANE_TAG' >> ~/.profile
+echo "export OPENLANE_TAG=$OPENLANE_TAG" >> ~/.profile
+echo "export OPENLANE_IMAGE_NAME=efabless/openlane:$OPENLANE_TAG" >> ~/.profile
