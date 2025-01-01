@@ -81,7 +81,7 @@ build {
       NETGEN_VERSION  = "1.5.270"
       OPENLANE_TAG    = "2024.05.09"
       VERILATOR_VERSION = "v5.024"
-      NGSPICE_VERSION = "43"
+      NGSPICE_VERSION = "44"
       XSCHEM_VERSION  = "e55c8294c2a89c4a6f45923abd5e20c40e4ffe86"
     }
     scripts = [
